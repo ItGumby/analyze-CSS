@@ -12,7 +12,8 @@ package com.github.itgumby
  */
 
 import org.w3c.css.sac.*
-import java.net.*;
+//import org.w3c.dom.css.*
+import java.net.*
 
 /**
  * This example count the number of property in the style rules (outside a
@@ -20,22 +21,22 @@ import java.net.*;
  * @author Philippe Le Hegaret
  */
 public class AnalyzeCss implements DocumentHandler {
-    boolean inMedia = false;
-    boolean inStyleRule = false;
-    int propertyCounter = 0;
+    boolean inMedia = false
+    boolean inStyleRule = false
+    int propertyCounter = 0
 
     public void startMedia(SACMediaList media) throws CSSException {
-        inMedia = true;
+        inMedia = true
     }
 
     public void endMedia(SACMediaList media) throws CSSException {
-        inMedia = false;
+        inMedia = false
     }
 
     public void startSelector(SelectorList patterns) throws CSSException {
         if (!inMedia) {
-            inStyleRule = true;
-            propertyCounter = 0;
+            inStyleRule = true
+            propertyCounter = 0
         }
     }
 
@@ -43,28 +44,28 @@ public class AnalyzeCss implements DocumentHandler {
         if (!inMedia) {
             System.out.println("Found " + propertyCounter + " properties.");
         }
-        inStyleRule = false;
+        inStyleRule = false
 
     }
 
     public void property(String name, LexicalUnit value, boolean important)
     throws CSSException {
         if (inStyleRule) {
-            propertyCounter++;
+            propertyCounter++
         }
     }
 
     public static void main(String[] args) throws Exception {
-        InputSource source = new InputSource();
-        URL uri = new URL("file", null, -1, args[0]);
-        InputStream stream = uri.openStream();
+        InputSource source = new InputSource()
+        URL uri = new URL("file", null, -1, args[0])
+        InputStream stream = uri.openStream()
 
-        source.setByteStream(stream);
-        source.setURI(uri.toString());
-        Parser parser = ParserFactory.makeParser();
+        source.setByteStream(stream)
+        source.setURI(uri.toString())
+        Parser parser = ParserFactory.makeParser()
 
-        parser.setDocumentHandler(new AnalyzeCss());
-        parser.parseStyleSheet(source);
-        stream.close();
+        parser.setDocumentHandler(new AnalyzeCss())
+        parser.parseStyleSheet(source)
+        stream.close()
     }
 }

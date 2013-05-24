@@ -25,7 +25,7 @@ dependencies {
     compile "commons-cli:commons-cli:${commons_cli_version}"
     compile "com.google.guava:guava:${guava_version}"
 
-    compile "milyn.sac:${sac_version}"
+    compile "org.w3c.css:sac:${sac_version}"
 
     runtime "ch.qos.logback:logback-classic:${logback_classic_version}"
 
