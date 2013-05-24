@@ -1,10 +1,6 @@
 repositories {
     mavenCentral()
     maven {
-        name 'jgit-repository'
-        url 'http://download.eclipse.org/jgit/maven'
-    }
-    maven {
         name 'sonatype-repository'
         url 'http://oss.sonatype.org/content/repositories/snapshots/'
     }
@@ -14,7 +10,7 @@ apply plugin: 'groovy'
 apply plugin: 'application'
 
 sourceCompatibility = '1.6'
-mainClassName = 'gradletemplate.Main'
+mainClassName = 'AnalyzeCSS.Main'
 
 dependencies {
     groovy "org.codehaus.groovy:groovy:${groovy_version}", {
