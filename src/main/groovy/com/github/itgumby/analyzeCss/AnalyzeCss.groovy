@@ -1,4 +1,4 @@
-package com.github.itgumby
+package com.github.itgumby.analyzeCss
 /*
  * Copyright (c) 2000 World Wide Web Consortium,
  * (Massachusetts Institute of Technology, Institut National de
@@ -12,7 +12,7 @@ package com.github.itgumby
  */
 
 import org.w3c.css.sac.*
-//import org.w3c.dom.css.*
+import org.w3c.css.sac.helpers.ParserFactory
 import java.net.*
 
 /**
@@ -67,5 +67,55 @@ public class AnalyzeCss implements DocumentHandler {
         parser.setDocumentHandler(new AnalyzeCss())
         parser.parseStyleSheet(source)
         stream.close()
+    }
+
+    @Override
+    void startDocument(InputSource source) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    void endDocument(InputSource source) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    void comment(String text) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    void ignorableAtRule(String atRule) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    void namespaceDeclaration(String prefix, String uri) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    void importStyle(String uri, SACMediaList media, String defaultNamespaceURI) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    void startPage(String name, String pseudo_page) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    void endPage(String name, String pseudo_page) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    void startFontFace() {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    void endFontFace() {
+        //To change body of implemented methods use File | Settings | File Templates.
     }
 }
