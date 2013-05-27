@@ -7,10 +7,11 @@ repositories {
 }
 
 apply plugin: 'groovy'
+//apply plugin: 'java'
 apply plugin: 'application'
 
 sourceCompatibility = '1.6'
-mainClassName = 'AnalyzeCSS.Main'
+mainClassName = 'com.github.itgumby.analyzeCss.ParseExample'
 
 dependencies {
     groovy "org.codehaus.groovy:groovy:${groovy_version}", {
@@ -21,14 +22,16 @@ dependencies {
     }
 
     compile "org.slf4j:slf4j-api:${slf4j_version}"
-    compile "com.google.code.findbugs:jsr305:${jsr305_version}"
-    compile "commons-cli:commons-cli:${commons_cli_version}"
-    compile "com.google.guava:guava:${guava_version}"
+//    compile "com.google.code.findbugs:jsr305:${jsr305_version}"
+//    compile "commons-cli:commons-cli:${commons_cli_version}"
+//    compile "com.google.guava:guava:${guava_version}"
 
-    compile "org.w3c.css:sac:${sac_version}"
+    //compile "org.w3c.css:sac:${sac_version}"
+    compile "net.sourceforge.cssparser:cssparser:0.9.5"
 
     runtime "ch.qos.logback:logback-classic:${logback_classic_version}"
 
+    testCompile 'junit:junit:4.10'
     testCompile "org.spockframework:spock-core:${spock_version}", {
         exclude group: 'org.codehaus.groovy', module: 'groovy-all'
     }
