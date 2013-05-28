@@ -2,11 +2,13 @@ package com.github.itgumby
 
 import com.steadystate.css.parser.CSSOMParser
 import org.junit.Test
-import static org.junit.Assert.*
 import org.w3c.css.sac.InputSource
 import org.w3c.dom.css.CSSRule
 import org.w3c.dom.css.CSSStyleDeclaration
 import org.w3c.dom.css.CSSValue
+
+import static org.junit.Assert.assertEquals
+import org.junit.Ignore
 
 //courtesy of http://stackoverflow.com/questions/1513587/looking-for-a-css-parser-in-java
 public class ParseCssTest {
@@ -44,5 +46,14 @@ public class ParseCssTest {
         assertEquals("0 cm", o.getPropertyCSSValue("margin-top").toString());
         assertEquals("0 cm", o.getPropertyCSSValue("margin-top").getCssText());
         assertEquals(CSSValue.CSS_VALUE_LIST, o.getPropertyCSSValue("margin-top").getCssValueType());
+    }
+
+    @Test
+    @Ignore
+    public void parseMediaQueries() throws IOException {
+        String mediQuery = "@media screen and (max-width:1024px) { p { color: black; } }"
+        CSSOMParser parser = new CSSOMParser();
+        CSSStyleDeclaration o = parser.parseStyleDeclaration(new InputSource(new StringReader(mediQuery)));
+        assertEquals(mediQuery, o.toString())
     }
 }

@@ -1,9 +1,16 @@
 repositories {
     mavenCentral()
-    maven {
-        name 'sonatype-repository'
-        url 'http://oss.sonatype.org/content/repositories/snapshots/'
+
+    // Github Jar gist https://gist.github.com/xinthink/2300206
+    add(new org.apache.ivy.plugins.resolver.URLResolver()) {
+        name = 'Github'
+        addArtifactPattern 'http://cloud.github.com/downloads/[organisation]/[module]/[module]-[revision].[ext]'
     }
+
+//    maven {
+//        name 'sonatype-repository'
+//        url 'http://oss.sonatype.org/content/repositories/snapshots/'
+//    }
 }
 
 apply plugin: 'groovy'
@@ -27,7 +34,8 @@ dependencies {
 //    compile "com.google.guava:guava:${guava_version}"
 
     //compile "org.w3c.css:sac:${sac_version}"
-    compile "net.sourceforge.cssparser:cssparser:0.9.5"
+    compile "net.sourceforge.cssparser:cssparser:${cssparser_version}"
+    compile "corgrath:osbcp-css-parser:${osbcpparser_version}"
 
     runtime "ch.qos.logback:logback-classic:${logback_classic_version}"
 
